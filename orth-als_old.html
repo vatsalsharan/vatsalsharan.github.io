@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Orthogonalized ALS</title>
+</head>
+<body>
+<div id="layout-content">
+<div id="toptitle">
+<h1>Orthogonalized ALS</h1>
+</div>
+<p>The popular Alternating Least Squares (ALS) algorithm for tensor decomposition is extremely efficient, but often converges to poor local optima, particularly when the weights of the factors are non-uniform. Orthogonalized ALS is a modification of the ALS approach that is as efficient as standard ALS, but provably recovers the true factors with random initialization under standard incoherence assumptions on the factors of the tensor.  This algorithm is a simple modification of the ALS algorithm to periodically &lsquo;&lsquo;orthogonalize&rsquo;&rsquo; the estimates of the factors.  Intuitively, this periodic orthogonalization prevents multiple recovered factors from &lsquo;&lsquo;chasing after&rsquo;&rsquo; the same true factors, allowing for the avoidance of local optima and more rapid convergence to the true factors.</p>
+<p>In our <a href="https://arxiv.org/abs/1703.01804">paper</a>, we demonstrate the significant practical superiority of our approach over traditional ALS (with both random initialization and SVD-based initialization) for a variety of tasks on synthetic data, including tensor factorization on exact, noisy and over-complete tensors, as well as tensor completion. We also observed significant improvements in using Orthogonalized ALS over standard ALS for computing word embeddings from a third-order word tri-occurrence tensor, refer to the paper for more details.</p>
+<p>In practice, we have also observed that it is sometimes useful to orthogonalize the factor estimates for a few iterations, and then continue with standard ALS. This is true when factors have a high correlation with each other, such as in low-dimensional settings. Our advice to practitioners would be try Hybrid-ALS first before the fully orthogonalized Orth-ALS, and then tune the number of steps for which orthogonalization takes place to get the best results.</p>
+<h2>Code</h2>
+<p>As Orthogonalized ALS only requires an additional orthogonalization step before the ALS step, it is straightforward to modify an existing ALS implementation to run Orthogonalized ALS instead. To save the reader the trouble, we are providing implementations of Orthogonalized ALS in a few different languages. These implementations are simple modifications of existing ALS libraries.</p>
+<h3>MATLAB</h3>
+<p>The MATLAB code is built on top of the MATLAB Tensor Toolbox. You can find the latest vesion <a href="http://www.sandia.gov/~tgkolda/TensorToolbox/index-2.6.html">here</a>. The toolbox is free for academic use. The code for Orthogonalized ALS which performs orthogonalization before every ALS step till convergence can be found <a href="cp_als_orth.m">here</a>. The code for Orthogonalized ALS which allows the number of iterations for which orthogonalization is to be continued to be passed as a parameter can be found <a href="cp_als_hybrid.m">here</a>.</p>
+<h3>Python</h3>
+<p>The Python code is built on top of the <a href="https://github.com/mnick/scikit-tensor">scikit-tensor</a> library by Maximilian Nickel. The code for Orthogonalized ALS can be found <a href="cp_orth.py">here</a>. The number of iterations for which orthogonalization is to be continued can be passed as a parameter.</p>
+<h3>C</h3>
+<p>The C code is a modification of the <a href="http://shaden.io/splatt.html">SPLATT Toolkit</a> by Shaden Smith and George Karypis. The SPLATT package allows for easy parallelization and efficient handling of large but sparse tensors. We recommend this package over the MATLAB and Python implementations for large datasets. Our modification of the SPLATT Toolkit which allows orthogonalization of the factor estimates upto a desired number of iterations can be found <a href="splatt.zip">here</a>. If our modification of the SPLATT Toolkit contributes to your research, please also consider citing the original SPLATT package.</p>
+<hr>
+<p>Please send any feedback, comments or bug reports to vsharan at stanford dot edu. All software released under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2017-08-04 00:29:01 PDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</div>
+</body>
+</html>

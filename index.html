@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
+
+    <title>Vatsal Sharan</title>
+
+  </head>
+
+  <body>
+    
+    <div class="container">
+
+    	<div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Vatsal Sharan
+                </h1>
+            </div>
+        </div>
+
+      <div class="row">
+        <div class="col-md-2">
+		<div class="photo">
+	  		<img id="picture" src="docs/vatsal.jpg" style="width:240px;height:280px;" class="photo_pic"/>
+		</div>      
+		</div>
+        <div class="col-md-5 col-md-offset-1">
+          <br>
+		  <font size="3">
+		  <p>Postdoctoral Researcher,<br>
+		  MIT<br>
+          <a href="docs/Vatsal-Resume.pdf">(Resume)</a>
+		  </p>
+		  <p>
+	 	  vsharan at stanford dot edu
+		  </p>
+		  </font>
+		</div>
+      </div>
+      <div class="voffset1"></div>
+      <div class="row">
+        <div class="span12">
+		<section id="about">
+
+	    <h3>About</h3>
+
+			<p>
+            I am a Norbert Wiener postdoc at MIT, hosted by Ankur Moitra and Philippe Rigollet. I will be joining the Computer Science Department at USC as an assistant professor in Fall 2021. I recently obtained my Ph.D. from Stanford, under the amazing guidance of Greg Valiant. I was a part of the <a href="http://theory.stanford.edu/main/index.shtml">Theory Group</a> and the <a href="http://statsml.stanford.edu/">Statistical Machine Learning Group</a> at Stanford, and have had the good fortune of collaborating with amazing researchers from both these groups.<br><br>
+            
+            I work on machine learning, statistics and theoretical computer science. My research aims to understand how to solve learning and inference tasks in the face of various computational and statistical constraints, such as limited memory or too little data. I am also broadly interested in the desiderata in practical applications beyond these constraints as well---particularly in notions of robustness. My interests are both in developing theoretical frameworks to understand the fundamental limits in these modern settings, and in designing practical algorithms to tackle these problems. If you're interested in learning more, some of my recent work studies the following questions:
+            <ul>
+            <li>What is the role of memory in learning and optimization? How do we learn concepts with small memory? Are there inherent trade-offs between the amount of memory required for learning or optimization, and the amount of data or computation required?
+            <li> How can we ensure that trained models are robust even when evaluated on data distributions which differ from the original training distribution? How do we detect anomalies and shifts in the data distribution?
+            <li> What is the relationship between learning an unknown distribution <i>D</i>, testing properties of <i>D</i>, and generating new samples from <i>D</i>?
+            </ul>
+            
+			</p>
+		</section>
+
+	  <section id="papers">
+	    <h3>Publications</h3>
+	    (asterisk indicates joint or alphabetical authorship)<br><br>
+	    <ul>
+
+            <li><p><div style="font-size:15px;font-weight:bold">One Network Fits All? Modular versus Monolithic Task Formulations in Neural Networks
+                Learning</div>
+                Atish Agarwala*, Abhimanyu Das*, Brendan Juba*, Rina Panigrahy*, Vatsal Sharan*, Xin Wang*, Qiuyi Zhang*<br>
+                <i>ICLR, 2021</i><br>
+                <a data-toggle="collapse" href="#collapseExample_deep"><b>abstract</b></a></b></a> | <a href="https://openreview.net/pdf?id=uz5uw6gM0m"><b>prelim pdf</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample_deep">
+               Can deep learning solve multiple, very different tasks simultaneously? We investigate this question in this work, and do a systematic study of how the properties of the underlying tasks affect the ability of a single neural network to learn them jointly. We present theoretical and empirical findings that neural networks are capable of learning multiple tasks when these tasks are naturally clustered and well-separated. We also show that multi-task learning can be provably hard---even though the individual tasks are easy to learn---in settings where such a natural separation does not exist, and validate this through experiments.<br><br>
+            </div>
+            
+	    	<li><p><div style="font-size:15px;font-weight:bold">Sample Amplification: Increasing Dataset Size even when Learning is Impossible</div>
+		 	Brian Axelrod*, Shivam Garg*, Vatsal Sharan*, Gregory Valiant*<br>
+		 	<i>ICML, 2020 </i><br>
+		 	<a data-toggle="collapse" href="#collapseExample_sample"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1904.12053.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1904.12053"><b>arXiv</b></a> | <a data-toggle="collapse" href="#video2"><b>video</b></a>
+		 	</p></li>
+
+		 	<div class="collapse space justify" id="collapseExample_sample">
+			   <i>Is learning a distribution always necessary for generating new samples from the distribution?</i> We introduce the problem of "sample amplification": given <i>n</i> independent draws from a distribution, <i>D</i> , to what extent is it possible to output a set of <i>m > n </i>  datapoints that are indistinguishable from <i>m</i>  i.i.d. draws from <i>D</i> ? Curiously, we show that nontrivial amplification is often possible in the regime where <i>n</i>  is too small to learn <i>D</i>  to any nontrivial accuracy.<br><br>
+			</div>
+            
+            <div class="collapse space justify" id="video2">
+                Jump to 50:00 (or topic #27) in this <a href="https://slideslive.com/38922033/machine-learning-with-guarantees-1">video</a>.<br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">PIDForest: Anomaly Detection via Partial Identification</div>
+                Parikshit Gopalan*, Vatsal Sharan*, Udi Wieder*<br>
+                <i> NeurIPS, 2019 <b>(Spotlight)</b></i><br>
+                <a data-toggle="collapse" href="#collapseExample2"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1912.03582.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1912.03582"><b>arXiv</b></a> | <a href="https://github.com/vatsalsharan/pidforest"><b>code</b></a> | <a data-toggle="collapse" href="#video1"><b>spotlight video</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample2">
+                We propose a definition of an anomaly that captures the intuition that anomalies are easy to distinguish from the overwhelming majority of points by relatively few attribute values: we call this partial identification. Formalizing this intuition, we propose a geometric anomaly measure for a point that we call PIDScore, which measures for the minimum density of data points over all subcubes containing the point. We present PIDForest: a random forest based algorithm that finds anomalies based on this definition, and show that it performs favorably in comparison to several popular anomaly detection methods, across a broad range of benchmarks.<br><br>
+            </div>
+            
+            <div class="collapse space justify" id="video1">
+                Jump to 35:30 (or topic #47) in this <a href="https://slideslive.com/38921752/track-3-session-3">video</a>.<br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Compressed Factorization: Fast and Accurate Low-Rank Factorization of Compressively-Sensed Data</div>
+                Vatsal Sharan*, Kai Sheng Tai*, Peter Bailis, Gregory Valiant</i><br>
+                <i>ICML, 2019 </i><br>
+                <a data-toggle="collapse" href="#collapseExample3"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1706.08146.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1706.08146"><b>arXiv</b></a> | <a href="https://github.com/kaishengtai/compressed-factorization"><b>code</b></a> | <a data-toggle="collapse" href="#video3"><b>spotlight video</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample3">
+                What learning algorithms can be run directly on compressively-sensed data? If we compress a high dimensional matrix via a random projection, then what is the relationship between the factors of the original matrix and the factors of the compressed matrix? While it is well-known that random projections preserve a number of geometric properties of a dataset, this work shows that random projections can also preserve certain solutions to non-convex, NP-Hard problems like non-negative matrix factorization---both in theory and in practice.<br><br>
+            </div>
+            
+            <div class="collapse space justify" id="video3">
+                Jump to 53:20 in this <a href="https://slideslive.com/38917770/optimization">video</a>.<br>
+            </div>
+ 
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Memory-Sample Tradeoffs for Linear Regression with Small Error</div>
+                Vatsal Sharan, Aaron Sidford, Gregory Valiant<br>
+                <i>STOC, 2019</i><br>
+                <a data-toggle="collapse" href="#collapseExample4"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1904.08544.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1904.08544"><b>arXiv</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample4">
+                What is the role of memory in continuous optimization and learning? Are there inherent trade-offs between the available memory and the data requirement? Is it possible to achieve the sample complexity of second-order optimization methods with significantly less memory? We raise these questions, and show the first nontrivial lower bounds for linear regression with super-linear memory: we show that there is a gap between the sample complexity of algorithms with quadratic memory and that of any algorithm with sub-quadratic memory. <br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Recovery Guarantees for Quadratic Tensors with Limited Observations</div>
+                Hongyang Zhang, Vatsal Sharan, Moses Charikar and Yingyu Liang<br>
+                <i>AISTATS, 2019</i><br>
+                <a data-toggle="collapse" href="#collapseExample5"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1811.00148.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1811.00148"><b>arXiv</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample5">
+               We consider the tensor completion problem of predicting the missing entries of a tensor. The commonly used CP model has a triple product form, but an alternate family of quadratic models which are the sum of pairwise products instead of a triple product have emerged from applications such as recommendation systems. Non-convex methods are the method of choice for learning quadratic models, and this work studies their sample complexity and error guarantees via theoretical results and experiments on real and synthetic data.<br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Efficient Anomaly Detection via Matrix Sketching</div>
+                Vatsal Sharan, Parikshit Gopalan, Udi Wieder</i><br>
+                <i>NeurIPS, 2018</i><br>
+                <a data-toggle="collapse" href="#collapseExample6"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1804.03065.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1804.03065"><b>arXiv</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample6">
+                PCA based anomaly scores are commonly used for finding anomalies in high-dimensional data. The naive algorithms for computing these scores explicitly compute the PCA of the covariance matrix which uses space quadratic in the dimensionality of the data. Using matrix sketching tools and new matrix perturbation inequalities, we give the first streaming algorithms for computing these scores that use space that is linear or sublinear in the dimension.<br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">A Spectral View of Adversarially Robust Features</div>
+                Shivam Garg, Vatsal Sharan*, Brian Zhang*, Gregory Valiant</i><br>
+                <i>NeurIPS, 2018 <b>(Spotlight)</i></b><br>
+                <a data-toggle="collapse" href="#collapseExample7"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1811.06609.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1811.06609"><b>arXiv</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample7">
+                Despite a surge of recent effort, there is still much that we do not understand about why models are vulnerable to adversarial perturbations, or how to reduce this vulnerability. In this work, we introduce the simpler, intermediate task of learning a set of "robust features"---features which are stable to adversarial perturbations. These features can subsequently be used as inputs to a classifier, which will then inherit the robustness properties. We propose one approach to constructing robust features, which leverages a tight connection between robustness and spectral properties of the neighbourhood graph of the data.<br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Moment-Based Quantile Sketches for Efficient High Cardinality Aggregation Queries</div>
+                Edward Gan, Jialin Ding, Kai Sheng Tai, Vatsal Sharan, Peter Bailis</i><br>
+                <i>VLDB, 2018</i><br>
+                <a data-toggle="collapse" href="#collapseExample8"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1803.01969.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1803.01969"><b>arXiv</b></a> | <a href="https://github.com/stanford-futuredata/msketch"><b>code</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample8">
+                We propose a compact and efficiently mergeable sketch for answering quantile queries on a dataset. This data structure, which we refer to as the moments sketch, operates with a small memory footprint (200 bytes) and achieves computationally efficient (50ns) merges by tracking only a set of summary statistics, notably the sample moments.<br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Prediction with a Short Memory</div>
+                Vatsal Sharan, Sham Kakade, Percy Liang, Gregory Valiant</i><br>
+                <i>STOC, 2018</i><br>
+                <a data-toggle="collapse" href="#collapseExample9"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1612.02526.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1612.02526"><b>arXiv</b></a> | <a href="https://theorydish.blog/2017/11/29/prediction-with-a-short-memory/"><b>blog</b></a> | <a href="https://www.youtube.com/watch?v=-Lhmr9vqjrE&t=5s"><b>video</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample9">
+                When is it necessary to remember significant information from the distant past to make good predictions about the future in sequential prediction tasks? How do we consolidate and reference memories about the past in order to predict the future? This work studies these questions, and the findings are perhaps counterintuitive: we show that a simple (Markov) model which bases its predictions on only the most recent observations and the statistics of short windows, can  achieve small error on average with respect to a large class of sequences, such as those generated by Hidden Markov Models (HMMs). This shows that long-term memory may not be necessary for making good predictions on average, even on sequences generated by complex processes that have long-range dependencies.<br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Sketching Linear Classifiers over Data Streams</div>
+             Kai Sheng Tai, Vatsal Sharan, Peter Bailis, Gregory Valiant</i><br>
+                <i>SIGMOD, 2018</i><br>
+                <a data-toggle="collapse" href="#collapseExample10"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1711.02305.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1711.02305"><b>arXiv</b></a> | <a href="https://github.com/stanford-futuredata/wmsketch"><b>code</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample10">
+                We introduce a new sub-linear space sketch---the Weight-Median Sketch---for learning compressed linear classifiers over data streams while supporting the efficient recovery of large-magnitude weights in the classifier. The Weight-Median Sketch adopts the core data structure used in the Count-Sketch, but, instead of sketching counts, it captures sketched gradient updates to the model parameters. We establishes recovery guarantees for our sketch and demonstrate empirical improvements in memory-accuracy trade-offs over alternative memory-budgeted methods. <br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Learning Overcomplete HMMs</div>
+                Vatsal Sharan, Sham Kakade, Percy Liang, Gregory Valiant</i><br>
+                <i>NeurIPS, 2017</i><br>
+            <a data-toggle="collapse" href="#collapseExample11"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1711.02309.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1711.02309"><b>arXiv</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample11">
+                We study the problem of learning overcomplete HMMs---those that have many hidden states but a small output alphabet. Despite having significant practical importance, such HMMs are poorly understood with no known positive or negative results for efficient learning. In this paper, we present several new results---both positive and negative---which help define the boundaries between the tractable and intractable settings. <br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Orthogonalized ALS: A Theoretically Principled Tensor Decomposition Algorithm for Practical Use
+            </div>
+            Vatsal Sharan, Gregory Valiant</i><br>
+            <i>ICML, 2017</i><br>
+            <a data-toggle="collapse" href="#collapseExample12"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1703.01804.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1703.01804"><b>arXiv</b></a> | <a href="http://web.stanford.edu/~vsharan/orth-als.html"><b>code</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample12">
+                The popular Alternating Least Squares (ALS) algorithm for tensor decomposition is efficient and easy to implement, but often converges to poor local optima. We propose a modification of the ALS approach that is as efficient as standard ALS, but provably recovers the true factors with random initialization under standard incoherence assumptions on the factors of the tensor. We demonstrate the significant practical superiority of our approach over traditional ALS on a variety of synthetic and real-world tasks. <br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Large Deviation Property for Waiting Times for Markov and Mixing Processes
+            </div>
+            Vatsal Sharan, R.K. Bansal</i><br>
+            <i>ISIT, 2014</i><br>
+            <a data-toggle="collapse" href="#collapseExample13"><b>abstract</b></a> | <a href="https://arxiv.org/pdf/1703.01804.pdf"><b>pdf</b></a> | <a href="https://arxiv.org/abs/1703.01804"><b>arXiv</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample13">
+                We show a concentration theorem for the waiting time until the opening string in the realization of a random process first appears in an independent realization of the same or a different process.<br><br>
+            </div>
+            
+            </ul>
+            <br>
+            During undergrad, I worked on localization in sensor networks.<br><br>
+            <ul>
+            <li><p><div style="font-size:15px;font-weight:bold">Localization of Acoustic Beacons using Iterative Null Beamforming over Ad-hoc Wireless Sensor Networks
+            </div>
+            Vatsal Sharan, Sudhir Kumar, and Rajesh Hegde<br>
+            <i>IEEE Asilomar Conference on Signals, Systems, and Computers, 2013</i><br>
+            <a data-toggle="collapse" href="#collapseExample14"><b>abstract</b></a> | <a href="http://web.stanford.edu/~vsharan/asilomar.pdf"><b>pdf</b></a>
+                </p></li>
+            
+            <div class="collapse space justify" id="collapseExample14">
+                We propose an iterative method to localize and separate multiple audio beacons using the principle of null beam forming.<br><br>
+            </div>
+            
+            <li><p><div style="font-size:15px;font-weight:bold">Energy Efficient Optimal Node-Source Localization using Mobile Beacon in Ad-Hoc Sensor Networks
+            </div>
+            Sudhir Kumar, Vatsal Sharan and Rajesh Hegde<br>
+            <i>IEEE Global Communications Conference (Globecom), 2013</i><br>
+            <a data-toggle="collapse" href="#collapseExample15"><b>abstract</b></a> | <a href="http://web.stanford.edu/~vsharan/globecom.pdf"><b>pdf</b></a>                 </p></li>
+            
+            <div class="collapse space justify" id="collapseExample15">
+                We propose a single mobile beacon based method to localize nodes using the principle of maximum power reception.<br><br>
+            </div>
+
+            </ul>
+
+        <br><br><br>
+
+	  </section>
+	 
+	</div>
+      </div>
+    </div>
+  
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,18 @@
+.voffset1 { margin-top: 10px; }
+
+body {
+  padding-top: 0px;
+}
+
+section {
+	padding-top:40px;
+	margin-top:-40px;
+}
+
+div.space{
+  padding-right: 10%;
+}
+
+div.justify{
+    text-align: justify;
+}

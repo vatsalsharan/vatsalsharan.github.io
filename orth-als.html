@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
+    <title>Orthogonalized ALS</title>
+  </head>
+
+<body>
+<div class="container">
+
+	    	<div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Orthogonalized ALS
+                </h1>
+            </div>
+        </div>
+
+<!-- <h1>Orthogonalized ALS</h1> -->
+<p>The popular Alternating Least Squares (ALS) algorithm for tensor decomposition is extremely efficient, but often converges to poor local optima, particularly when the weights of the factors are non-uniform. Orthogonalized ALS is a modification of the ALS approach that is as efficient as standard ALS, but provably recovers the true factors with random initialization under standard incoherence assumptions on the factors of the tensor.  This algorithm is a simple modification of the ALS algorithm to periodically &lsquo;&lsquo;orthogonalize&rsquo;&rsquo; the estimates of the factors.  Intuitively, this periodic orthogonalization prevents multiple recovered factors from &lsquo;&lsquo;chasing after&rsquo;&rsquo; the same true factors, allowing for the avoidance of local optima and more rapid convergence to the true factors.</p>
+<p>In our <a href="https://arxiv.org/abs/1703.01804">paper</a>, we demonstrate the significant practical superiority of our approach over traditional ALS (with both random initialization and SVD-based initialization) for a variety of tasks on synthetic data, including tensor factorization on exact, noisy and over-complete tensors, as well as tensor completion. We also observed significant improvements in using Orthogonalized ALS over standard ALS for computing word embeddings from a third-order word tri-occurrence tensor, refer to the paper for more details.</p>
+<p>In practice, we have also observed that it is sometimes useful to orthogonalize the factor estimates for a few iterations, and then continue with standard ALS. This is true when factors have a high correlation with each other, such as in low-dimensional settings. Our advice to practitioners would be try Hybrid-ALS first before the fully orthogonalized Orth-ALS, and then tune the number of steps for which orthogonalization takes place to get the best results.</p>
+<h3>Code</h3>
+<p>As Orthogonalized ALS only requires an additional orthogonalization step before the ALS step, it is straightforward to modify an existing ALS implementation to run Orthogonalized ALS instead. To save the reader the trouble, we are providing implementations of Orthogonalized ALS in a few different languages. These implementations are simple modifications of existing ALS libraries.</p>
+<h4>MATLAB</h4>
+<p>The MATLAB code is built on top of the MATLAB Tensor Toolbox. You can find the latest vesion <a href="http://www.sandia.gov/~tgkolda/TensorToolbox/index-2.6.html">here</a>. The toolbox is free for academic use. The code for Orthogonalized ALS which performs orthogonalization before every ALS step till convergence can be found <a href="cp_als_orth.m">here</a>. The code for Orthogonalized ALS which allows the number of iterations for which orthogonalization is to be continued to be passed as a parameter can be found <a href="cp_als_hybrid.m">here</a>.</p>
+<h4>Python</h4>
+<p>The Python code is built on top of the <a href="https://github.com/mnick/scikit-tensor">scikit-tensor</a> library by Maximilian Nickel. The code for Orthogonalized ALS can be found <a href="cp_orth.py">here</a>. The number of iterations for which orthogonalization is to be continued can be passed as a parameter.</p>
+<h4>C</h4>
+<p>The C code is a modification of the <a href="http://shaden.io/splatt.html">SPLATT Toolkit</a> by Shaden Smith and George Karypis. The SPLATT package allows for easy parallelization and efficient handling of large but sparse tensors. We recommend this package over the MATLAB and Python implementations for large datasets. Our modification of the SPLATT Toolkit which allows orthogonalization of the factor estimates upto a desired number of iterations can be found <a href="splatt.zip">here</a>. If our modification of the SPLATT Toolkit contributes to your research, please also consider citing the original SPLATT package.</p>
+<hr>
+<p>Please send any feedback, comments or bug reports to vsharan at stanford dot edu. All software released under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+</div>
+</div>
+</body>
+</html>
