@@ -9,6 +9,7 @@
 \newcommand{\calX}{{\mathcal{X}}}
 \newcommand{\calY}{{\mathcal{Y}}}
 \newcommand{\calH}{{\mathcal{H}}}
+\newcommand{\calF}{{\mathcal{F}}}
 \newcommand{\VC}{{\text{\rm VCdim}}}
 \newcommand{\blue}[1]{{\color{blue}#1}}
 \newcommand{\R}{\mathbb{R}}
@@ -196,12 +197,12 @@ Prove that for any $d+2$ points $x_1, \ldots, x_{d+2} \in \R^d$, there exists a 
 \item For $k=\{1, \ldots, M\}$, let $r_k$ be some positive integer and $\calH_k: \cbr{-1,+1}^{r_k} \rightarrow \cbr{-1,+1}$ be some function class with growth function $\Pi_{\calH_k}$ and VC-dimension $d_k$.
 Further define a vector-valued function class mapping from $\cbr{-1,+1}^{r_k}$ to $\cbr{-1,+1}^{r_{k+1}}$ as
 \[
-\calH_k = \cbr{h(x) = (f_1(x), \ldots, f_{r_{k+1}}(x)) \;:\; f_1, \ldots, f_{r_{k+1}} \in \calH_k}.
+\calF_k = \cbr{h(x) = (f_1(x), \ldots, f_{r_{k+1}}(x)) \;:\; f_1, \ldots, f_{r_{k+1}} \in \calH_k}.
 \]
 Define $r_{M+1} = 1$.
 Then the following class represents an $M$-layer feedforward neural net
 \[
-\calH = \cbr{h_M \circ \cdots \circ h_1 :  \cbr{-1,+1}^{r_1} \rightarrow \cbr{-1,+1}\;:\; h_1 \in \calH_1, \ldots, h_M \in \calH_M}
+\calH = \cbr{h_M \circ \cdots \circ h_1 :  \cbr{-1,+1}^{r_1} \rightarrow \cbr{-1,+1}\;:\; h_1 \in \calF_1, \ldots, h_M \in \calF_M}
 \]
 where $\circ$ represents function composition (try to draw a picture to help understand  the notation).
 
