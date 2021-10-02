@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\prob}{Pr}
+\newcommand{\calX}{{\mathcal{X}}}
+\newcommand{\calY}{{\mathcal{Y}}}
+\newcommand{\calH}{{\mathcal{H}}}
+\newcommand{\calC}{{\mathcal{C}}}
+\newcommand{\calF}{{\mathcal{F}}}
+\newcommand{\calR}{{\mathcal{R}}}
+\newcommand{\VC}{{\text{\rm VCdim}}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cbr}[1]{\left\{#1\right\}}
+\newcommand{\rbr}[1]{\left(#1\right)}
+\newcommand{\inner}[2]{\left\langle #1,#2 \right\rangle}
+\newcommand{\order}{\ensuremath{\mathcal{O}}}
+\newcommand{\sign}{{\text{\rm sign}}}
+\newcommand{\indicator}{\mathbf{1}}
+\newcommand{\exampleoracle}{{\text{\rm EX}}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    }
+\usepackage{epsfig}
+\usepackage[shortlabels]{enumitem}
+\everymath=\expandafter{\the\everymath\displaystyle}
+%%\usepackage{psfig}
+\newcommand{\twonorm}[1]{\left\| #1\right\|_2}
+\newcommand{\onenorm}[1]{\left\| #1\right\|_1}
+\DeclareMathSizes{24}{24}{24}{24}
+\newcommand{\lecture}[1]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in { {\bf CSCI699: Theory of Machine Learning } \hfill Fall 2021 }
+      \vspace{4mm}
+      \hbox to 5.78in { {\Large \hfill #1  \hfill} }
+      \vspace{2mm}
+      \hbox to 5.78in {  \emph{\hfill Due: October 20 by 11:59 pm}}
+    }
+  }
+  \end{center}
+  \vspace*{4mm}
+}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{assumption}[theorem]{Assumption}
+
+% 1-inch margins, from fullpage.sty by H.Partl, Version 2, Dec. 15, 1988.
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+
+\parindent 0in
+\parskip 1.5ex
+%\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+
+\lecture{Problem Set 2}
+
+\emph{Discussion is allowed and encouraged but everyone should write solutions on their own. Please also mention any collaborators you had substantial discussions with. You are also allowed to consult general resources on the internet (such as for example whiteboard notes from our own lectures or one of the books), but you should not search for any the solutions themselves online. Homeworks should be written in Latex and submitted via Gradescope.}
+
+\emph{If you use the LaTeX template, then please only keep your answers and remove the questions before submitting.}
+
+\section*{Problem 1: Rademacher Complexity Bounds for Neural Networks}
+
+In this problem, we will derive bounds on the Rademacher Complexity for some simple neural networks.
+
+\begin{enumerate}[(a)] 
+
+\item (\blue{5pts}) First, consider the following class of `neural networks' with no hidden layers and a ReLU activation:
+
+\[
+\calC_0 = \{ x \mapsto \max\{0,w^Tx\}: w \in \R^d, \twonorm{w}\le B_2 \}.
+\]
+Consider a set of unlabelled datapoints $S=(x_1,\dots, x_n)$, where $x_i \in \R^d$, $\twonorm{x_i}\le C$. Bound the Rademacher Complexity $\calR(\calC_0 \circ S) $.
+
+\item (\blue{8pts}) Now consider the following class of neural networks with one hidden layer with $m$ hidden units,
+\[
+\calC_1 = \{ x \mapsto \sum_{j=1}^m \alpha_j\max\{0,w_j^Tx\}: \sum_{j=1}^m |\alpha_j| \le B_1 \;\& \;\forall\; j \in [m], w_j \in \R^d,  \twonorm{w_j}\le B_2 \}.
+\]
+Consider a set of unlabelled datapoints $S=(x_1,\dots, x_n)$, where $x_i \in \R^d$, $\twonorm{x_i}\le C$. Bound the Rademacher Complexity $\calR(\calC_1 \circ S) $.
+
+To do this, you will likely find it useful to bound the Rademacher complexity of an absolute value of a function composition. Define $\calR'(A)$ as the Rademacher complexity of a set $A$, but with an absolute value:
+\begin{align*}
+    \calR'(A) = \frac{1}{n}\E_{\sigma\sim \{\pm\}^n} \left[\sup_{a\in A} \left|\sum_{i=1}^n \sigma_i(a)_i\right|\right],
+\end{align*}
+where $(a)_i$ is the $i$th coordinate of the vector $a$. This definition is identical to the one we used in class, except for the additional absolute value. In fact, many papers consider this alternative definition of Rademacher complexity \cite{bartlett2002rademacher}. It can be shown $\calR'(A)$ satisfies a function composition property very similar to the contraction lemma we stated in class for the original definition of Rademacher complexity. 
+
+\begin{lemma}\cite{bartlett2002rademacher}
+Let $\phi:\R\rightarrow \R$ be a $\rho$-Lipschitz function  which satisfies $\phi(0)=0$. For any $a\in \R^n$, define $\phi(a)\in \R^n$ as the function $\phi$ applied to very coordinate of $a$, i.e. $\phi(a)=(\phi((a)_1),\dots,\phi((a)_n))$. Let $\phi \circ A = \{ \phi(a), a \in A\}$. Then,
+\begin{align*}
+    \calR'(\phi \circ A) \le 2\rho \calR'(A).
+\end{align*}
+
+\end{lemma}
+Try to use the above result to simplify your calculations. In the end, you should get a bound which does not explicitly depend on $m$ or $d$. Therefore, in contrast to the VC dimension bound we got in the last homework, the Rademacher complexity bound only depends on some appropriate norms of the parameters of the neural network, not the number of parameters itself.
+
+\end{enumerate}
+
+\section*{Problem 2: PAC Learning with 2-sided Oracles}
+
+(\blue{15pts}) As we mentioned in class, one of the advantages of defining the example oracle $\exampleoracle(c, D)$ is that we can now just think of access to a randomly drawn, labelled example as a resource/oracle that the learner has. The example oracle is just one possible kind of oracle access the learner could have, and this question will explore a different \textbf{two-oracle} model. For a target concept $c \in \calC$, define two separate distributions, $D_c^+$ over the positive examples of $c$, and $D_c^-$ over the negative examples of $c$. In other words, $D_c^+$ is the distribution of $x$ conditioned on $c(x)=1$, and similarly for $D_c^-$ (where as usual, we say that label 1 is a positive label and label 0 is a negative label). The learning algorithm now has access to two oracles $\exampleoracle(c, D_c^+)$ and  $\exampleoracle(c, D_c^-)$ that return a random positive or negative example in unit time. For error parameter $\epsilon$, the learning algorithm must find a hypothesis $h\in \calH$ satisfying $\Pr_{x\in D_c^+}[h(x)=0]\le \epsilon$ and $\Pr_{x\in D_c^-}[h(x)=1]\le \epsilon$. Thus, the learning algorithm may now explicitly request either a positive or negative example, but must find a single hypothesis with small error on both distributions.\\
+
+Let $\calC$ be any concept class and $\calH$ be any hypothesis class. Let $h_0$ and $h_1$ be representations of the identically 0 and identically 1 functions, respectively (i.e. $h_0(x)=0 \; \forall \; x \in \calX$, analogously for $h_1$). Prove that $\calC$ is efficiently PAC learnable using $\calH$ in the original one-oracle model if and only if $\calC$ is efficiently PAC learnable using $\calH \cup \{h_0,h_1\}$ in the two-oracle model. 
+
+\section*{Problem 3: Learning Halfspaces}
+
+In this problem, we will establish some learnability and hardness results for halfspaces, and functions of halfspaces.
+
+\begin{enumerate}[(a)] 
+    \item (\blue{7pts}) Consider the concept class of halfspaces 
+    \[
+    \calC = \{ x \mapsto
+ \indicator(\theta^T x + b>0): \theta \in \R^d, b \in \R \},
+    \]
+    here $\indicator(\cdot)$ denotes the indicator function which takes the value 1 if the input is true, and 0 otherwise.
+Show that $\calC$ is efficiently PAC learnable . You might find it useful to use a routine for solving \emph{linear programs} as part of your learning algorithm. A linear program (LP) solver takes as input $u \in \R^d, A \in \R^{n \times d}$ and $ v \in \R^m$, and outputs $w \in \R^d$ which is the solution to:
+\begin{align*}
+    \max_{w \in \R^d}\quad & w^Tu\\
+    \text{such that }\quad & Aw\ge v.
+\end{align*}
+It is known that there LP solvers which run in time polynomial in $n,d$ \cite{karmarkar1984new}.
+
+\item (\blue{15pts}) Now we consider a slightly more general hypothesis class, which is an intersection (conjunction) of \emph{two} halfpspaces. More formally, define
+\[
+\calC_2 = \{ x \mapsto
+ \indicator(\theta_1^T x + b_1>0) \cdot \indicator(\theta_2^T x + b_2>0): \theta_1, \theta_2 \in \R^d, b_1, b_2 \in \R \}.
+\]
+Show that it is not possible to properly PAC learn $\calC_2$ in polynomial time, unless NP=RP .
+
+To do this, you will find it helpful to consider the \emph{hypergraph 2-coloring} problem. 
+
+\begin{definition}
+A hypergraph $G$ is a set $V$ of $d$ vertices (denoted as $1,2,\dots, d$) and $m$ subsets $s_1,\dots,s_m\subseteq V$, these subsets are also known as hyperedges. The hypergraph 2-coloring problem is the problem of determining if there is a valid 2-coloring of the vertices (i.e. an assignment of a color, Red or Blue, to every vertex of the graph) such that no subset $s_j$ is monochromatic (i.e. every $s_j$ has at least one Red vertex and one Blue vertex). It is known that hypergraph 2-coloring is NP-Complete.
+\end{definition}
+
+You can use the following construction to create a set of labelled examples based on an input hypergraph $G$. 
+
+\begin{enumerate}
+    \item First, create a datapoint $(\mathbf{0},+1)$, where the input $\mathbf{0}$ is the origin, and the label is $+1$.
+    \item Next, for every vertex $i$, create a datapoint $(e_i,-1)$, where the input $e_i$ is the $i$-th basis vector (having a 1 in the $i$-th coordinate and 0 everywhere else), and the label is $-1$.
+    \item Finally, for every hyperedge $s_j$, create a datapoint $(u_j,+1)$ where $u_j$ is the indicator vector for the subset $s_j$ (having a 1 in coordinate $i$ if $i\in s_j$, and 0 otherwise).
+    \end{enumerate}
+    
+    \emph{Hint: A figure always helps, try to draw even a simple three vertex graph example. If you like, you can look at the hints given for Exercise 3.2 in Chapter 8 of the \href{https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf}{Understanding Machine Learning} book, which shows a similar hardness result.}
+
+\end{enumerate}
+
+\bibliographystyle{unsrt}
+\bibliography{references.bib}
+
+% To add a reference simply adapt the above example.
+
+\end{document}
