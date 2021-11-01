@@ -6,15 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
+        
+    <link href="css/main.css" rel="stylesheet">
+    
         <title>CS699: Theory of ML</title>
   </head>
 
-<body>
+<body> o
 <div class="container">
 
 	    	<div class="row">
@@ -50,7 +53,7 @@
 <h3 style="color:#1F618D;">Prerequisites</h3>
 
 Familiarity with probability, linear algebra, calculus, analysis of algorithms, basic understanding of machine learning.
-
+<!---
 <h3 style="color:#1F618D;">Topics</h3>
 
 <p>We will begin by covering basics of statistical learning theory, in particular the statistical requirement for solving learning tasks. We will cover the following fundamental tools:</p>
@@ -94,72 +97,188 @@ Familiarity with probability, linear algebra, calculus, analysis of algorithms, 
 
            <p> The final list of topics could change depending on our pace and the interests of the class. There is no official textbook for this course. Lecture notes and related reading will be posted on this website after each class.</p>
            
-<h3 style="color:#1F618D;">Announcements</h3>
+--->
+           
+<h3 style="color:#1F618D;">Syllabus and Materials</h3>
 
 We will post lecture notes and assignments here. Additional related reading for all lectures will be posted on Piazza after the lecture.
+<br><br>
 
-<!---
-
-
-<table style="width:100%" border="1" align="right">
+<table style="width:100%" border="1" align="right" id="table-custom" >
 <tr>
-  <th>Date</th>
+  <th>Lecture</th>
   <th>Topics</th>
-  <th>Recommended Reading</th>
+  <th>Lecture notes</th>
   <th>Homework</th>
 </tr>
 <tr>
-  <td align="center">08/29</td>
-  <td align="left">Introduction; statistical learning; online learning; no free lunch theorem; <br/> online-to-batch conversion; </td>
+  <td align="center">1, 08/23</td>
+  <td align="left">Introduction, PAC learning </td>
   <td align="left">
-  <a href="https://haipeng-luo.net/courses/CSCI699_2019/lecture1.pdf">Lecture notes 1</a>; <br/>
-  Sections 3, 4, 5 of <a href="http://www.mit.edu/~rakhlin/courses/stat928/stat928_notes.pdf">R&S</a>
+  <a href="/lecture_notes/lec1.pdf">Class notes</a>, <a href="/lecture_notes/lec1_final.pdf">Scribe notes</a>
   </td>
   <td align="center"></td>
 </tr>
 <tr>
-  <td align="center">09/05</td>
-  <td align="left">Uniform convergence; Rademacher complexity; finite class <br/>
-  Classification: growth function; VC dimension; Sauer's lemma</td>
+  <td align="center">2, 08/25</td>
+  <td align="left">Finite hypothesis classes, Bias-Complexity tradeoff, Agnostic PAC learning
   <td align="left">
-  <a href="https://haipeng-luo.net/courses/CSCI699_2019/lecture2.pdf">Lecture notes 2</a>;
+      <a href="/lecture_notes/lec2.pdf">Class notes</a>, <a href="/lecture_notes/lec2_final.pdf">Scribe notes</a>
   </td>
   <td align="center"></td>
 </tr>
 <tr>
-  <td align="center">09/12</td>
-  <td align="left">Finish Sauer's lemma's proof; <br/>
-  Regression: covering number; chaining technique; Dudley entropy integral; <br/>
-  </td>
+  <td align="center">3, 08/30</td>
+  <td align="left">Uniform convergence, concentration inequalities
   <td align="left">
-  <a href="https://haipeng-luo.net/courses/CSCI699_2019/lecture3.pdf">Lecture notes 3</a>; <br/>
-  Sections 12.4 and 12.9 of <a href="http://www.mit.edu/~rakhlin/courses/stat928/stat928_notes.pdf">R&S</a>
+      <a href="/lecture_notes/lec3.pdf">Class notes</a>, <a href="/lecture_notes/lec3_final.pdf">Scribe notes</a>
   </td>
-  <td align="center">
-  <a href="https://haipeng-luo.net/courses/CSCI699_2019/hw1.pdf">HW 1</a>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">4, 09/01</td>
+  <td align="left">Concentration inequalities, sub-Gaussian random variables
+  <td align="left">
+      <a href="/lecture_notes/lec4.pdf">Class notes</a>, <a href="/lecture_notes/lec4_final.pdf">Scribe notes</a>
   </td>
+  <td align="center"><a href="/lecture_notes/hw1.pdf">HW1</a></td>
+</tr>
+<tr>
+  <td align="center">5, 09/08</td>
+  <td align="left">VC dimension
+  <td align="left">
+      <a href="/lecture_notes/lec5.pdf">Class notes</a>, <a href="/lecture_notes/lec5_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">6, 09/13</td>
+  <td align="left">VC theorem, Rademacher complexity
+  <td align="left">
+      <a href="/lecture_notes/lec6.pdf">Class notes</a>, <a href="/lecture_notes/lec6_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">7, 09/15</td>
+  <td align="left">Generalization bounds using Rademacher complexity, properties of Rademacher complexity, linear hypothesis classes
+  <td align="left">
+      <a href="/lecture_notes/lec7.pdf">Class notes</a>, <a href="/lecture_notes/lec7_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">8, 09/20</td>
+  <td align="left">Start computational complexity of learning, learning conjunctions efficiently
+  <td align="left">
+      <a href="/lecture_notes/lec8.pdf">Class notes</a>, <a href="/lecture_notes/lec8_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">9, 09/22</td>
+  <td align="left">Intractability of learning 3-term DNF, Using 3-CNF to avoid intractability, proper vs. improper learning
+  <td align="left">
+      <a href="/lecture_notes/lec9.pdf">Class notes</a>, <a href="/lecture_notes/lec9_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">10, 09/27</td>
+  <td align="left">Hardness of improper learning using crypotogrphic assumptions, hardness of agnostically learning halfspaces
+  <td align="left">
+      <a href="/lecture_notes/lec10.pdf">Class notes</a>, <a href="/lecture_notes/lec9_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">11, 09/29</td>
+  <td align="left">Learning with random classification noise (RCN), SQ learning
+  <td align="left">
+      <a href="/lecture_notes/lec11.pdf">Class notes</a>, <a href="/lecture_notes/lec11_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"><a href="/lecture_notes/hw2.pdf">HW2</a></td>
+</tr>
+<tr>
+  <td align="center">12, 10/04</td>
+  <td align="left">SQ learning implies learning with RCN, SQ dimension, learning parities
+  <td align="left">
+      <a href="/lecture_notes/lec12.pdf">Class notes</a>, <a href="/lecture_notes/lec12_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">13, 10/06</td>
+  <td align="left">Hardness of learning parities in SQ, begin boosting
+  <td align="left">
+      <a href="/lecture_notes/lec13.pdf">Class notes</a>, <a href="/lecture_notes/lec13_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">14, 10/11</td>
+  <td align="left">AdaBoost and boosting, convex optimization, convex learning problems and convex surrogates
+  <td align="left">
+      <a href="/lecture_notes/lec14.pdf">Class notes</a>, <a href="/lecture_notes/lec14_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">15, 10/13</td>
+  <td align="left">Consistency of convex surrogates, gradient descent (GD), convergence of GD, variants and properties of GD
+  <td align="left">
+      <a href="/lecture_notes/lec15.pdf">Class notes</a>, <a href="/lecture_notes/lec15_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">16, 10/18</td>
+  <td align="left">SGD and its convergence, learning with SGD, begin online learning, mistake bound model
+  <td align="left">
+      <a href="/lecture_notes/lec16.pdf">Class notes</a>, <a href="/lecture_notes/lec16_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">17, 10/25</td>
+  <td align="left">Littlestone dimension, online learning in the unrealizable case, Weighted Majoriry algorithm
+  <td align="left">
+      <a href="/lecture_notes/lec17.pdf">Class notes</a>, <a href="/lecture_notes/lec17_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">18, 10/27</td>
+  <td align="left">Online convex optimization, Follow-the-Leader, Follow-the-Regularized-Leader, Online gradient descent (OGD)
+  <td align="left">
+      <a href="/lecture_notes/lec18.pdf">Class notes</a>, <a href="/lecture_notes/lec18_final.pdf">Scribe notes</a>
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">19, 10/29</td>
+  <td align="left">Regret of OGD, online perceptron, computational-statistical tradeoffs, planted clique problem
+  <td align="left">
+      <a href="/lecture_notes/lec19.pdf">Class notes</a>
+  </td>
+  <td align="center"><a href="/lecture_notes/hw3.pdf">HW3</a></td>
+</tr>
+<tr>
+  <td align="center">20, 10/29</td>
+  <td align="left">Planted clique conjecture, memory-sample tradeoffs for learning. Class presentation begin, see schedule <a href="/project.html">here</a>
+  <td align="left">
+      <a href="/lecture_notes/lec20.pdf">Class notes</a>
+  </td>
+  <td align="center"></td>
 </tr>
 </table>
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-</table>
 
---->
+<br>
+<br>
+<br>
 
+
+<!---
 
 <br><br>
 
@@ -228,6 +347,7 @@ We will post lecture notes and assignments here. Additional related reading for 
                    
 </ol>
             
+            --->
 <h3 style="color:#1F618D;">Requirements and Grading</h3>
 
 <ol>
