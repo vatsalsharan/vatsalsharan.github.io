@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
+        
+    <link href="css/main.css" rel="stylesheet">
+    
+        <title>CS699: Theory of ML</title>
+  </head>
+
+<body>
+<div class="container">
+
+            <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header" style="color:#B03A2E;">CSCI 699: Machine Learning Theory
+                </h1>
+            </div>
+        </div>
+
+<p>
+
+<h3 style="color:#1F618D;">Basic Information</h3>
+
+<ul>
+    <li> <b> Lecture time: </b> Monday 2:00 pm to 5:20 pm
+    <li> <b> Lecture place: </b> DMC 256
+        <li> <b> Instructor: </b> Vatsal Sharan (vsharan)
+            <li> <b>TAs: </b> TBD
+            <li> <b>CPs & Graders: </b> TBD
+                    <li> <b> Office Hours: </b>  TBD.
+                    <li> <b> Communication: </b> All inquiries which do not pertain to a specific member of the course staff should be sent via ed Discussion (see below). USC email-ids of all staff members are in parantheses above.
+            <li> <b> ed Discussion: </b> We will be using <a href="https://edstem.org/">ed</a> for all course communications (regarding homework, project, course scheduling, etc). Please feel free to ask/answer any questions about the class on ed. You can post privately on ed to contact the course staff for any reason. You should be enrolled in ed automatically.
+                <li> <b> Gradescope: </b> We will use <a href="https://gradescope.com/">Gradescope </a> for assignment and final project submission.
+    </ul>
+        
+
+<h3 style="color:#1F618D;">Course Description and Objectives</h3>
+
+<p> This course focuses on the theoretical foundation of machine learning. The focus will be on understanding fundamental questions regarding both computational and statistical aspects of learning, with an overarching goal to answer the core question: what is the complexity of learning, in terms of its computational and statistical requirements? The course will also cover several modern aspects of the theory of maching learning---including memory complexity of learning, deep learning theory, robustness, and fairness.</p>
+
+<p> The hope is that through this course you will learn to think about machine learning in a more rigorous and principled way and have the skills to design provable and practical machine learning algorithms, which also work in the face of various computational and statistical constraints and meet modern desiderata. The course will equip you with the tools required to undertake research in theoretical machine learning, and will shed light on various interesting research frontiers.</p>
+
+<h3 style="color:#1F618D;">Prerequisites</h3>
+
+Familiarity with probability, linear algebra, calculus, analysis of algorithms, basic understanding of machine learning. Python programming knowledge will be helpful.
+
+           
+<h3 style="color:#1F618D;">Syllabus and Materials</h3>
+
+The following is a tentative schedule. We will post lecture notes and assignments here. Additional related reading for all lectures will be posted on ed discussion after the lecture.
+<br><br>
+<div id="table-custom">
+    <table style="width:100%" align="right">
+        <tr>
+            <th style="text-align:center; width:8%;">Lecture</th>
+            <th style="text-align:center">Topics</th>
+            <th style="text-align:center">Lecture notes</th>
+            <th style="text-align:center">Homework</th>
+        </tr>
+<tr>
+  <td align="center">1, 08/21</td>
+  <td align="left">Introduction, PAC learning, finite hypothesis classes, bias-complexity tradeoff, agnostic PAC learning, uniform convergence </td>
+  <td align="left">
+  </td>
+  <td align="center"></td>
+</tr>
+
+<tr>
+  <td align="center">3, 08/28</td>
+  <td align="left">Concentration inequalities, sub-Gaussian random variables, VC dimension
+  <td align="left">
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">4, 09/11</td>
+  <td align="left"> VC theorem, Rademacher complexity, generalization bounds using Rademacher complexity, properties of Rademacher complexity, linear hypothesis classes
+  <td align="left">
+      <!--  <a href="/lecture_notes/lec4.pdf">Class notes</a>, <a href="/lecture_notes/lec4_final.pdf">Scribe notes</a>-->
+  </td>
+  <td align="center">
+      <!-- <a href="/lecture_notes/hw1.pdf">HW1</a></td>-->
+</tr>
+
+<tr>
+  <td align="center">5, 09/18</td>
+  <td align="left"> Computational complexity of learning, learning conjunctions efficiently, intractability of learning 3-term DNF, proper vs. improper learning, hardness of improper learning using crypotographic assumptions, hardness of agnostically learning halfspaces
+  <td align="left">
+
+  </td>
+  <td align="center"></td>
+</tr>
+
+<tr>
+  <td align="center">6, 09/25</td>
+  <td align="left">Learning with random classification noise (RCN), SQ learning, SQ learning implies learning with RCN, SQ dimension, learning parities, hardness of learning parities in SQ
+  <td align="left">
+    
+  </td>
+  <td align="center"></td>
+</tr>
+
+<tr>
+  <td align="center">7, 10/02</td>
+  <td align="left">AdaBoost and boosting, convex optimization, convex learning problems and convex surrogates, gradient descent (GD), convergence of GD, variants and properties of GD, SGD and its convergence, learning with SGD
+  <td align="left">
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">8, 10/09</td>
+  <td align="left">Regularization and structural risk minimization, kernel methods
+      <td align="left">
+      </td>
+      <td align="center"></td>
+    </tr>
+
+
+  <td align="center">9, 10/16</td>
+  <td align="left">Online learning, mistake bound model, Littlestone dimension, online learning in the unrealizable case, Weighted Majoriry algorithm
+  <td align="left">
+ 
+  </td>
+  <td align="center"></td>
+</tr>
+
+<tr>
+  <td align="center">10, 10/23</td>
+  <td align="left">Online convex optimization, Follow-the-Leader, Follow-the-Regularized-Leader, Online gradient descent (OGD)
+  <td align="left">
+  </td>
+  <td align="center"></td>
+</tr>
+
+<tr>
+  <td align="center">11, 10/30</td>
+  <td align="left">Planted clique conjecture, memory-sample tradeoffs for learning
+      <td align="left">
+      </td>
+      <td align="center"></td>
+    </tr>
+
+<tr>
+  <td align="center">12, 11/06</td>
+  <td align="left">Non-convex optimization, challenges of understanding deep learning, depth-size tradeoffs
+  <td align="left">
+   
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">13, 11/13</td>
+  <td align="left"> Optimization landscape for deep learning, algorithmic regularization, benign overfitting
+  <td align="center"></td>
+  <td align="center"></td>
+</tr>
+
+<tr>
+  <td align="center">14, 11/13</td>
+  <td align="left">Algorithmic explorations. See presentation schedule <a href="/project.html">here</a>.
+  <td align="center"></td>
+  <td align="center"></td>
+</tr>
+
+<tr>
+  <td align="center">15, 11/13</td>
+  <td align="left">Algorithmic explorations.  See presentation schedule  <a href="/project.html">here</a>.
+  <td align="center"></td>
+  <td align="center"></td>
+</tr>
+</table>
+</div>
+     
+<div><h3 style="color:#1F618D;">Requirements and Grading</h3></div>
+
+<ol>
+    
+    <li>  <b> 3-4 homeworks </b> worth 40% of the grade. Discussion is allowed and encouraged but everyone should write solutions on their own. Homeworks should be written in Latex and submitted via Gradescope.
+        
+        <li> The major component will be a <b> course presentation </b> (30%) and <b> project project </b> (25%). An overview of the requirements is given below, detailed instructions will be discussed later. The course presentation and project will be in <b>groups of two students. </b>
+            
+            <ul> <li> The class presentation is one of the most important components of the course, and will involve explore various algorithmic and foundational aspects of machine learning that we do not get to investigate in sufficient depth in class. For the project, you will be matched to a conceptual question about ML based on your interest. The question could involve further studying some algorithm we saw in class, studying some new algorithm, investigating aspects of ML we did not get to explore (such as robustness, fairness, privacy), investigating phenomenon in deep learning, exploring and understanding datasets or the performance of ML algorithms on these datasets, etc. You will also be expected to provide some independent insight about your topic of study. This could either come from your own empirical analysis  or theoretical investigation. You will give a presentation of about 30 minutes based on your work. To help ensure all presentations are high quality, presenters will be asked to go over their slides and review their preparation with the course staff about a week before the presentation (this will be worth 10%, the actual in-class presentation will be worth 20%).
+                 <li> The project project will be 8-9 pages. You have two options for it: (1) You can continue investigating the topic of your presentation, and write a report on the research you did. (2) You can write a report surveying 2-3 papers.
+                     </ul>
+            <li> 5% of the grade will be based on <b> course attendance and participation</b>.
+</ol>
+
+<h3 style="color:#1F618D;">Resources and related courses</h3>
+
+<ol>
+    
+    <li>  There is no required textbook for this class, but the following books are good supplemental reading for many parts.
+        <ul>
+            
+            <li> Understanding Machine Learning:
+                From Theory to Algorithms, by Shai Shalev-Shwartz and Shai Ben-David. Availble online <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf">here</a>.
+                
+                <li> An Introduction to Computational Learning Theory, by Michael J. Kearns and Umesh Vazirani. Available using your USC account
+                    <a href="https://uosc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_proquest_ebookcentral_EBC5966119&context=PC&vid=01USC_INST:01USC&lang=en&search_scope=MyInst_and_CI&adaptor=Primo%20Central&tab=Everything&mode=Basic">here</a>.
+                    
+           </ul>
+        
+        <li> This course draws heavily from several other related courses, and the material there could be a good reference. Here are some pointers (there are also many other excellent courses missing in this short list):
+            
+            <ul>
+             
+             <li> Haipeng Luo's class at USC. <a href="https://haipeng-luo.net/courses/CSCI699_2019/index.html">[website]</a>
+                 
+                 <li> Akshay Krishnamurthy's class at UMass.
+                     <a href="https://people.cs.umass.edu/~akshay/courses/cs690m/index.html">[website]</a>
+                     <li> Tengyu Ma's and Percy Liang's class at Stanford.
+                     <a href="http://web.stanford.edu/class/stats214/">[Tengyu's course website]</a> <a href="https://web.stanford.edu/class/cs229t/2017/Lectures/percy-notes.pdf">[Percy's lecture notes]</a>
+                     
+                     <li> Rocco Servedio's class at Columbia.
+                     <a href="http://www.cs.columbia.edu/~cs4252/">[website]</a>
+                     
+                     <li> Varun Kanade's class at Oxford.
+                     <a href="http://www.cs.ox.ac.uk/people/varun.kanade/teaching/CLT-HT-TT2021/">[website]</a>
+                     
+                     <li> Avrim Blum's class at TTIC. <a href="https://home.ttic.edu/~avrim/MLT20/">[website]</a>
+                     
+                     <li> Matus Telgarsky's class at UIUC.
+                     <a href="https://mjt.cs.illinois.edu/courses/mlt-f18/">[website]</a>
+                     
+                     
+                     
+                     
+            </ul>
+            
+         </ol>
+     
+      <br><br><br>
+     
+</div>
+</div>
+</body>
+</html>
+
