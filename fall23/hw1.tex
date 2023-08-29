@@ -1,0 +1,247 @@
+\documentclass[11pt]{article}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\prob}{Pr}
+\newcommand{\calX}{{\mathcal{X}}}
+\newcommand{\calY}{{\mathcal{Y}}}
+\newcommand{\calH}{{\mathcal{H}}}
+\newcommand{\calF}{{\mathcal{F}}}
+\newcommand{\VC}{{\text{\rm VCdim}}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cbr}[1]{\left\{#1\right\}}
+\newcommand{\rbr}[1]{\left(#1\right)}
+\newcommand{\inner}[2]{\left\langle #1,#2 \right\rangle}
+\newcommand{\order}{\ensuremath{\mathcal{O}}}
+\newcommand{\sign}{{\text{\rm sign}}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    }
+\usepackage{epsfig}
+\usepackage[shortlabels]{enumitem}
+\everymath=\expandafter{\the\everymath\displaystyle}
+%%\usepackage{psfig}
+\newcommand{\twonorm}[1]{\left\| #1\right\|_2}
+\DeclareMathSizes{24}{24}{24}{24}
+\newcommand{\lecture}[1]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in { {\bf CSCI699: Theory of Machine Learning } \hfill Fall 2023 }
+      \vspace{4mm}
+      \hbox to 5.78in { {\Large \hfill #1  \hfill} }
+      \vspace{2mm}
+      \hbox to 5.78in {  \emph{\hfill Due: September 20 by 11:59 pm}}
+    }
+  }
+  \end{center}
+  \vspace*{4mm}
+}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{assumption}[theorem]{Assumption}
+
+% 1-inch margins, from fullpage.sty by H.Partl, Version 2, Dec. 15, 1988.
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+
+\parindent 0in
+\parskip 1.5ex
+%\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+
+\lecture{Problem Set 1}
+
+\emph{Discussion is allowed and encouraged but everyone should write solutions on their own. Please also mention any collaborators you had substantial discussions with. You are also allowed to consult general resources on the internet (such as one of the books, or other lecture notes online), but you should not search for any the solutions themselves online. }
+
+\emph{If you use the LaTeX template, then please only keep your answers and remove the questions before submitting.}
+
+Homeworks should be written in Latex and submitted via Gradescope. \textbf{When you submit on Gradescope, make sure to mark the page which contains each answer.}
+
+\section*{Problem 1: PAC Learnability for Axis-Aligned Rectangles}
+
+\emph{Most of this question appears as Exercise 3 in Chapter 2 of the \href{https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf}{Understanding Machine Learning} book. You are free to look at additional hints given there, if you like.}
+
+This question is about showing a PAC learning guarantee for rectangles, and will hopefully help understand different facets of PAC learning. As we discussed in lecture 1 of class, an axis aligned rectangle classifier is a classifier than assigns the value 1 to a point if and only if it is inside a certain rectangle. Formally, given real numbers $a_1\le b_1, a_2 \le b_2$, define the classifier $h_{(a_1,b_1,a_2,b_2)}$ on an input with coordinates $(x_1,x_2)$ by
+    \[ 
+    h_{(a_1,b_1,a_2,b_2)}(x_1, x_2) =
+    \begin{cases} 
+      1 & \text{if } a_1\le x_1\le b_1 \text{ and }  a_2\le x_2\le b_2\\
+      0 & \text{otherwise}
+   \end{cases}
+\]
+The hypothesis class of all axis-aligned rectangles in the plane is defined as
+\begin{align*}
+    \mathcal{H}_{\text{rec}}^2 = \{ h_{(a_1,b_1,a_2,b_2)}(x_1, x_2): a_1 \le b_1, a_2 \le b_2\}.
+\end{align*}
+Throughout this exercise we rely on the realizability assumption.
+\begin{enumerate}[(a)] 
+    \item (\blue{3pts}) Let $A$ be the algorithm that returns the smallest rectangle enclosing all positive examples in the training set. Show that $A$ is an ERM.
+%    \item (\blue{2pts}) State the VC dimension of $\calH_{\text{rec}}^2$, and the sample complexity result that we would obtain for learning $ \calH_{\text{rec}}^2$ given the VC-dimension result from class.
+    \item (\blue{5pts}) % The bound that we get above is not tight. This is because the VC-dimension sample complexity result which we stated in class was not tight. Here, we can directly show a tighter result for learning $\calH_{\text{rec}}^2$ without employing the VC-dimension machinery. 
+    Show that if the algorithm $A$ from part (1) receives a training set of size $\ge \frac{4 \log (4/\delta)}{\epsilon}$ then with probability at least $1-\delta$ it returns a hypothesis with error at most $\epsilon$.
+    \item (\blue{5pts}) Repeat the previous question for the class of axis-aligned rectangles in $\R^d$.
+    \item (\blue{5pts}) Show that the runtime of the algorithm $A$ is polynomial in $d,1/\epsilon$ and $\log(1/\delta)$. Therefore, we have shown that the class of axis-aligned rectangles in $\R^2$ is $\emph{efficiently}$ PAC-learnable. Though we are not talking too much about efficient runtimes at this point of the class, we will spend more time discussing it soon.
+\end{enumerate}
+
+\section*{Problem 2: Uniform Convergence for Parameterized Hypothesis Classes}
+
+In class, we saw a uniform convergence result for finite hypothesis classes (which then directly implied agnostic PAC learnability for finite hypothesis classes). In this question, we'll see how we can use the result for finite hypothesis classes to also get uniform convergence for certain infinite classes, using the powerful idea of an \emph{$\epsilon$-net}.
+
+Let $\calH$ be a hypothesis class consisting of a family of functions indexed by some parameter $\theta$ which lies in the set $S$, i.e.
+$\calH=\{h_{\theta}: \theta \in S\}$.
+We assume for this question that the set $S$ is the ball of radius $B>0$ in $\R^d$:
+\begin{align}
+    S=\{\theta \in \R^d: \twonorm{\theta}\le B\}.
+\end{align} 
+
+%In this parameterized setting, we can parameterize the risk of any hypothesis $h_{\theta}$ by the parameter $\theta$, therefore we will write $$
+
+Assume that the risk $R(h_{\theta})$  of any hypothesis $h_{\theta}$ is a \emph{L-Lipschitz} function of $\theta$, defined as follows.
+
+\begin{definition}
+Let $L\ge 0$. The function $R(h_\theta)$ is a $L$-Lipschitz function of $\theta$ if for all $\theta, \theta' \in S$ we have,
+\begin{align*}
+    | R(h_{\theta}) - R(h_{\theta'})| \le L \twonorm{\theta-\theta'}.
+\end{align*}
+Similarly, the empirical risk $\hat{R}(h_\theta)$ is a $L$-Lipschitz function of $\theta$ if for all $\theta, \theta' \in S$ we have,
+\begin{align*}
+    | \hat{R}(h_{\theta}) - \hat{R}(h_{\theta'})| \le L \twonorm{\theta-\theta'}.
+\end{align*}
+
+\end{definition}
+
+\begin{enumerate}[(a)]
+    \item (\blue{2pts})  Briefly discuss when this $L$-Lipschitz condition could be satisfied (does not need to be rigorous, you can be high-level). You might find it useful to think about losses other than the 0/1 loss we've usually considered in class. 
+    \item (\blue{5pts}) Since $S$ is infinite, $\calH$ is an infinite hypothesis class. We now define the notion of an $\epsilon$-net of $S$ which allows us to consider only a finite subset of $S$ to show uniform convergence for $\calH$.
+    \begin{definition}
+    Let $\epsilon>0$. An $\epsilon$-net of $S$ (with respect to the $\twonorm{\cdot}$ norm) is a subset $C \subseteq S$ such that $\forall \; \theta \in S, \exists \; \theta' \in C$ such that $\twonorm{\theta-\theta'}\le \epsilon$.
+    \end{definition}
+    Show that the set $C$ defined as follows is an $\epsilon$-net of $S$,
+    \begin{align*}
+        C=\left\{ \theta \in S: \theta_i = \frac{j\epsilon}{\sqrt{d}}, j \in \mathbb{Z}, |j|\le \frac{B\sqrt{d}}{\epsilon} \right\} .
+    \end{align*}
+    Here $\theta_i$ denotes the $i$-th coordinate of the vector $\theta$, $\mathbb{Z}$ is the set of all integers. (Hint: it might be helpful to draw a picture. We're essentially trying to `cover' the entire ball $S$ using this grid of points $C$.)
+    \item (\blue{3pts}) Assume $\epsilon<3B\sqrt{d}$. Show that $|C|\le \left(\frac{3B\sqrt{d}}{\epsilon}\right)^d$. 
+    \item (\blue{2pts}) Assume that the loss function $\ell(h_{\theta}(x),y)\in [-M,M]$ for every datapoint $(x,y)$. Using Hoeffding's inequality, show that with probability $\ge 1-2|C|\exp\left(-\frac{n\alpha^2}{2M^2} \right)$,
+    \begin{align*}
+        |\hat{R}(h_{\theta})-R(h_{\theta})| \le \alpha, \; \forall \; \theta\in C.
+    \end{align*}
+    We refer to the above event as $E$ for the rest of the problem.
+    \item (\blue{5pts}) Using the $L$-Lipschitz property of $R(h_{\theta})$ and $\hat{R}(h_{\theta})$, show that conditioned on the event $E$,
+    \begin{align}
+     |\hat{R}(h_{\theta})-R(h_{\theta})| \le 2L\epsilon+\alpha, \forall \; \theta \in S.
+    \end{align}
+    (Hint: by the property of the $\epsilon$-net, for any $\theta \in S$, there is some $\theta' \in C$ such that $\twonorm{\theta-\theta'}\le \epsilon$. In part (d) we have shown that the empirical and true risks are close for all $\theta' \in C$. Try to decompose $\hat{R}(h_{\theta})-R(h_{\theta})$ in a suitable way such that you can then use part (d), the $L$-Lipschitz property of the functions $R(h_\theta)$ and $\hat{R}(h_\theta)$, and the triangle inequality to bound $|\hat{R}(h_{\theta})-R(h_{\theta})|$.)
+    
+   \item (\blue{3pts}) The final step is a bit algebraic, so we take all constants $L=B=M=1$. Show that if we set 
+    \begin{align*}
+        \alpha=10\sqrt{\frac{d\log(n)}{n}}, \text{ and } \epsilon=\frac{\alpha}{2},
+    \end{align*}
+    then conditioned on the event $E$, 
+    \begin{align*}
+        |\hat{R}(h_{\theta})-R(h_{\theta})| \le 20\sqrt{\frac{d\log(n)}{n}}, \forall \; \theta \in S.
+    \end{align*}
+    Using this, bound the failure probability: show that $\prob(E)\ge {1-e^{-d}}$. This implies that with failure probability $\order(e^{-d})$,
+   \begin{align*}
+        |\hat{R}(h_{\theta})-R(h_{\theta})| \le 20\sqrt{\frac{d\log(n)}{n}}, \forall \; \theta \in S.
+    \end{align*}
+
+\end{enumerate}
+
+\emph{Let's look back at what we have shown: our result implies that for some constant $c'>0$ and $n\ge \frac{c'd\log(d/\gamma)}{\gamma^2}$, with failure probability $\order(e^{-d})$,
+    \begin{align*}
+        |\hat{R}(h_{\theta})-R(h_{\theta})| \le \gamma, \forall \; \theta \in S.
+    \end{align*}
+    Using the reduction from agnostic PAC learning to uniform convergence, we have therefore shown that the sample complexity of agnostically learning $\calH$ to error $\gamma$ with failure probability $\order(e^{-d})$ is at most $\order\left(\frac{d\log(d/\gamma)}{\gamma^2}\right)$. This technique of using an $\epsilon$-net to show some property of every member of an infinite set comes in handy in many places.}
+
+\section*{Problem 3: VC dimension}
+
+In this problem we will explore VC dimension bounds for various hypothesis classes.
+
+\begin{enumerate}[(a)]
+\vspace{5pt}
+\item 
+Let $\calX = \R^d, \calY = \{-1,+1\} $ and $\calH = \{f_{\theta,b}(x) =  \sign\rbr{\inner{x}{\theta}+b} \;:\; \theta \in \R^d, b \in \R\}$ be the set of $d$-dimensional linear classifiers.
+Prove $\VC(\calH) = d+1$ following the two steps below.
+
+\begin{enumerate}[(i)]
+%\vspace{5pt}
+\item (\blue{3pts}) 
+Construct $d+1$ points $x_1, \ldots, x_{d+1} \in \R^d$ and argue that for any labeling $y_1, \ldots, y_{d+1} \in \{-1,+1\}$, there exists $h \in \calH$ such that $h(x_t) = y_t$ for all $t = 1, \ldots, d+1$. \\
+
+%\vspace{5pt}
+\item (\blue{4pts}) 
+Prove that for any $d+2$ points $x_1, \ldots, x_{d+2} \in \R^d$, there exists a labeling $y_1, \ldots, y_{d+2} \in \{-1,+1\}$ such that no $h\in\calH$ satisfies $h(x_t) = y_t$ for all $t = 1, \ldots, d+2$. 
+(Hint: use the fact that $m+1$ points in an $m$-dimensional space must be linearly dependent.)\\
+
+\end{enumerate}
+
+\vspace{5pt}
+\item We will now get a VC dimension bound for neural networks.   For $k=\{1, \ldots, M\}$, let $r_k$ be some positive integer and $\calH_k: \cbr{-1,+1}^{r_k} \rightarrow \cbr{-1,+1}$ be some function class with growth function $\Pi_{\calH_k}$ and VC-dimension $d_k$.
+Further define a vector-valued function class mapping from $\cbr{-1,+1}^{r_k}$ to $\cbr{-1,+1}^{r_{k+1}}$ as
+\[
+\calF_k = \cbr{h(x) = (f_1(x), \ldots, f_{r_{k+1}}(x)) \;:\; f_1, \ldots, f_{r_{k+1}} \in \calH_k}.
+\]
+Define $r_{M+1} = 1$.
+Then the following class represents an $M$-layer feedforward neural net
+\[
+\calH = \cbr{h_M \circ \cdots \circ h_1 :  \cbr{-1,+1}^{r_1} \rightarrow \cbr{-1,+1}\;:\; h_1 \in \calF_1, \ldots, h_M \in \calF_M}
+\]
+where $\circ$ represents function composition (try to draw a picture to help understand  the notation).
+
+\begin{enumerate}[(i)]
+%\vspace{5pt}
+\item (\blue{4pts}) 
+Prove that the growth function of $\calH$ is bounded as \[\Pi_\calH(n) \leq \prod_{k=1}^M \rbr{\Pi_{\calH_k}(n)}^{r_{k+1}}.\] 
+
+%\vspace{5pt}
+\item (\blue{2pts}) 
+Let $d = \sum_{k=1}^M r_{k+1} d_k$. Prove $\Pi_\calH(n) \leq (en)^d$ for $n>d+1$. \\
+
+%\vspace{5pt}
+\item (\blue{3pts}) 
+Further show $\VC(\calH) = \order(d\ln d)$.
+(Hint: take logarithms, and you might find the inequality $1+\ln x \leq 2\sqrt{x}$ useful.)\\
+
+This shows a VC-dimension bound which holds for deep neural networks, and is essentially the same as the number of parameters of the network. This bound can be  loose for modern neural networks where the number of parameters $d$ can run in billions, but we can still can good test accuracy with much fewer samples. Understanding the relationship between the number of parameters of neural networks and how much data we need to learn has been a topic of much study recently \cite{kaplan2020scaling,hoffmann2022training}.
+
+\end{enumerate}
+
+\vspace{5pt}
+\item (\blue{4pts}) 
+For the examples of hypothesis classes we've seen so far, the number of parameters gave a good estimate of the VC dimension of the hypothesis class. This is often, but not always the case. Let $\calX = \R, \calY = \{-1,+1\}$ and $\calH = \cbr{f_\theta(x) = \sign(\sin(\theta x)) \;:\; \theta \in \R}$.
+Prove that for any $n$, $\calH$ shatters the set $\{x_1,\dots,x_n: x_i = 2^{-2i}, i \in [n]\}$. This implies that $\VC(\calH) = \infty$. Therefore there is a hypothesis classes with just a single parameter which is not PAC-learnable.
+(Hint: for any labeling $\{y_1,\dots, y_n\}$, consider $\theta = \pi(1+ \sum_{i=1}^n (1-y_i)2^{2i-1})$.)  \\
+
+\end{enumerate}
+
+\bibliographystyle{unsrt}
+\bibliography{refs.bib}
+
+% To add a reference simply adapt the above example.
+
+\end{document}
