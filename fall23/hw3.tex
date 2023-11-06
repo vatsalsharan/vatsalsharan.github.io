@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\prob}{Pr}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\calX}{{\mathcal{X}}}
+\newcommand{\calY}{{\mathcal{Y}}}
+\newcommand{\calH}{{\mathcal{H}}}
+\newcommand{\calC}{{\mathcal{C}}}
+\newcommand{\calF}{{\mathcal{F}}}
+\newcommand{\calR}{{\mathcal{R}}}
+\newcommand{\calM}{{\mathcal{M}}}
+\newcommand{\VC}{{\text{\rm VCdim}}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\domain}{\text{domain}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cbr}[1]{\left\{#1\right\}}
+\newcommand{\rbr}[1]{\left(#1\right)}
+\newcommand{\inner}[2]{\left\langle #1,#2 \right\rangle}
+\newcommand{\order}{\ensuremath{\mathcal{O}}}
+\newcommand{\sign}{{\text{\rm sign}}}
+\newcommand{\indicator}{\mathbf{1}}
+\newcommand{\statoracle}{{\text{\rm STAT}}}
+\newcommand{\exampleoracle}{{\text{\rm EX}}}
+\newcommand{\sqdim}{{\text{\rm SQ-DIM}}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    }
+\usepackage{epsfig}
+\usepackage[shortlabels]{enumitem}
+\everymath=\expandafter{\the\everymath\displaystyle}
+%%\usepackage{psfig}
+\newcommand{\twonorm}[1]{\left\| #1\right\|_2}
+\newcommand{\onenorm}[1]{\left\| #1\right\|_1}
+\DeclareMathSizes{24}{24}{24}{24}
+\newcommand{\lecture}[1]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in { {\bf CSCI699: Theory of Machine Learning } \hfill Fall 2023 }
+      \vspace{4mm}
+      \hbox to 5.78in { {\Large \hfill #1  \hfill} }
+      \vspace{2mm}
+      \hbox to 5.78in {  \emph{\hfill Due: November 29 by 11:59 pm}}
+    }
+  }
+  \end{center}
+  \vspace*{4mm}
+}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{assumption}[theorem]{Assumption}
+
+% 1-inch margins, from fullpage.sty by H.Partl, Version 2, Dec. 15, 1988.
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+
+\parindent 0in
+\parskip 1.5ex
+%\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+
+\lecture{Problem Set 3 (Theory portion)}
+
+\emph{Discussion is allowed and encouraged but everyone should write solutions on their own. Please also mention any collaborators you had substantial discussions with. You are also allowed to consult general resources on the internet (such as one of the books, or other lecture notes online), but you should not search for any the solutions themselves online. }
+
+\emph{If you use the LaTeX template, then please only keep your answers and remove the questions before submitting. Homeworks should be written in Latex and submitted via Gradescope. When you submit on Gradescope, make sure to mark the page which contains each answer.}
+
+\section*{Problem 1: Learning sparse parities}
+
+Consider the concept class of \emph{sparse} parity functions:
+\begin{align*}
+    \calC = \{w(x) = \inner{w}{x} \mod 2 : w \in \{0,1\}^d, \sum_{i=1}^d w_i = k\}.
+\end{align*}
+Let the distribution $D$ over $x$ be the uniform distribution over $\{0,1\}^d$ for the remainder of this question.
+
+\begin{enumerate}[(a)]
+    \item (\blue{5pts}) Show that in the presence of random classification noise with noise level $\eta$, $\calC$ is learnable (not necessarily efficiently) under the distribution $D$ with $O\left(\frac{k\log d}{(1-2\eta)^2}\right)$ samples with high probability. 
+    \item (\blue{4pts}) Show that then any SQ algorithm for learning $\calC$ over the distribution $D$ which makes queries of tolerance $\tau\ge \tau_{\min}$ must make $\Omega(\tau_{\min}^2(d/k)^k)$ queries to  $\statoracle(c,D)$ to learn $\calC$. The following theorem from the lecture notes will be useful.
+    
+    \begin{theorem}
+    If the concept class $\calC$ has $\sqdim_{D}(\calC)=s$, then any SQ algorithm for learning $\calC$ over the distribution $D$ which makes queries of tolerance $\tau\ge \tau_{\min}$ must make $\Omega(\tau_{\min}^2s)$ queries to  $\statoracle(c,D)$ to learn $\calC$.
+    \end{theorem}
+    
+\item     (\blue{2pts}) Contrast the bounds from the previous two parts. What can you say about the learnability of the sparse parity concept class?
+
+\end{enumerate}
+
+%    Therefore, even though sparse parities are information theoretically learnable with  sparse parities are not efficiently learnable under the uniform distribution in the SQ model whenever $k$ is not a constant (for instance, for $k=\log(d)$), even though information theoretically 
+
+
+\newpage
+\section*{Problem 2: Convergence rate of gradient descent for strongly convex problems}
+
+In this question, we will prove the exponential convergence rate of gradient descent for smooth, strongly convex functions which was stated in the lecture. Let $f$ be a convex, differentiable function from $\R^d \rightarrow \R$. Further, assume that $f$ is $\beta$-smooth and $\lambda$-strong convex: 
+
+\begin{definition}
+$f$ is $\beta$-smooth if $\forall\; x, y \in \domain(f)$,
+\begin{align*}
+    f(y) \le f(x) + \inner{y-x}{\nabla f(x)}+\frac{\beta}{2}\twonorm{y-x}^2.
+\end{align*}
+\end{definition}
+\begin{definition}
+
+$f$is $\lambda$-strongly convex if $\forall\; x, y \in \domain(f)$,
+\begin{align*}
+    f(y) \ge f(x) + \inner{y-x}{\nabla f(x)}+\frac{\lambda}{2}\twonorm{y-x}^2.
+\end{align*}
+\end{definition}
+
+\begin{enumerate}[(a)]
+    
+    \item (\blue{2pts}) Show that for any $x\in \R^d$,
+    \begin{align*}
+       \frac{\lambda}{2} \twonorm{w-w^*}^2 \le f(w)-f(w^*) \le \frac{\beta}{2}\twonorm{w-w^*}^2.
+    \end{align*}
+    Therefore we can relate the sub-optimality of $w$ to its distance from $w^*$.
+    \item (\blue{2pts}) Let $x^*=\argmin_{x\in \R^d} f(x)$. Show that for any $w\in \R^d$,
+    \begin{align*}
+       \frac{1}{2\beta} \twonorm{\nabla f(w)}^2 \le f(w)-f(w^*) .
+    \end{align*}
+    \emph{Hint: Use the definition of $\beta$-smoothness for $x=w$ and $y=w-\frac{1}{\beta}\nabla f(w)$}.
+    
+    This says that the norm of the gradient at a point is proportional to the sub-optimality of the point, and hence if gradient descent  takes small steps then the current function value is close to optimal.
+    \item (\blue{4pts}) Suppose we run gradient descent with step size $1/\beta$, and let $w_t$ be the gradient descent iterate at time $t$. Show that,
+    \begin{align*}
+        \twonorm{w_{t+1}-w^*}^2 \le \left(1-\frac{\lambda}{\beta}\right)\twonorm{w_{t}-w^*}^2.
+    \end{align*}
+    \emph{Hint: First use the gradient descent update step to write $w_{t+1}$ in terms of $w_t$. Then expand the square, use the definition of strong-convexity, and the result from part (b) to simplify the expression.}
+    \item (\blue{2pts}) Finally, show that for $\kappa=\beta/\lambda$,
+    \begin{align*}
+        f(w_t)-f(w^*) \le e^{-t/\kappa}\twonorm{w_0-w^*}^2(\beta/2).
+    \end{align*}
+    
+\end{enumerate}
+
+\section*{Problem 3: Online learning of decision lists}
+
+In this question we consider the hypothesis class $\calH$ of \emph{decision lists}. A decision list is a function from $\{0,1\}^d \rightarrow \{0,1\}$, defined as follows. A decision list of length $k$ over $d$ Boolean variables $x_1,\dots, x_d$ is a list of $k$ pairs $\{(l_i,b_i), i \in [k]\}$ of literals $l_i$ and bits $b_i$, and a single bit $b_{k+1}$ (recall that a literal is either a Boolean variable $x_i$, or its negation $\bar{x}_i)$. The output of a decision list is given by a if-then-else statement over the literals:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dl.png}
+    \caption{A decision list of length $k$.}
+    \label{fig:dl}
+\end{figure}
+
+To compute the value of $h(x)$ for any decision list $h$, we start from the first level of the list which has a literal $l_1$ and a bit $b_1$. If the literal $l_1$ evaluates to true, we output $b_1$, otherwise we go to the next level. Therefore the output of the decision list is $b_i$ if the literal at the $i$-th level is the first literal which is satisfied, and is $b_{k+1}$ if none of the literals are satisfied.
+
+\begin{enumerate}[(a)]
+    \item (\blue{3pts}) Show that the Littlestone dimension of the class of decision lists of level $k$ on $d$ variables is upper bounded by $O(k\log d)$. (Note that this only depends logarithmically on the number of variables $d$, and can hence handle a very large input space. An algorithm for learning decision lists which has a $\poly(k, \log d)$ mistake bound is known as an \emph{attribute-efficient} learning algorithm, since it is very efficient in the number of attributes).
+    \item We will now show that there is an efficient algorithm $A$ which learns $\calH$ in the mistake bound model with a mistake bound $\calM_A(\calH)=O(dk)$. 
+    
+    (\blue{3pts}) Using the following sketch, write an algorithm for learning decision lists: 
+    \begin{itemize}
+        \item You can begin by putting all possible pairs $\{(l,b):l \in \{x_i,\bar{x}_i, i\in [d]\}, b \in \{0,1\}\}$ at the first level of the decision list.
+        \item At any time $t$, given any example $a_t$, start from the first level. If there is any pair $(l,b)$ such that $l$ is satisfied on the example, choose $b$ as the output. If there is no such pair move to the next level. 
+        \item If the prediction is incorrect, you should move the chosen pair to some other level.
+    \end{itemize}
+    
+    (Your algorithm need not be a proper learning algorithm, since multiple pairs could survive at every level.)
+    
+    
+   \item (\blue{4pts}) Show that the pair at level $i$ for the ground truth decision list $h^*$ is never demoted below the $i$-th level in your algorithm.
+   
+   \item (\blue{4pts}) Finally, argue that your algorithm can only make $O(dk)$ mistakes.
+    
+    \emph{Note that we get a $O(dk)$ mistake bound, whereas the Littlestone dimension is $O(k\log d)$. Learning decision lists with a $\poly(k, \log d)$ mistake bound (attribute-efficient learning of decision lists) is a long-standing open problem in computational learning theory. We can also ask this question in the PAC learning setup, where $O(k \log d)$ samples are information theoretically sufficient for learning, but there is no efficient algorithm with a $\poly(k, \log d)$ sample complexity. Check out \cite{klivans2006toward,long2006attribute} to learn more about this problem if you are interested.}
+    
+\end{enumerate}
+
+
+%\section*{Problem 5: Weighted majority, AdaBoost, and two-player games}
+
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+
+\end{document}
