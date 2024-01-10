@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
+        
+    <link href="css/main.css" rel="stylesheet">
+    
+        <title>CSCI 567: Machine Learning (Fall 2022)</title>
+  </head>
+
+<body>
+<div class="container">
+
+	    	<div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header" style="color:#B03A2E;">CSCI 567: Machine Learning
+                </h1>
+            </div>
+        </div>
+
+<p>
+
+<h3 style="color:#1F618D;">Basic Information</h3>
+
+<ul>
+    <li> <b> Lecture time: </b> Fridays 1:00 pm to 3:20 pm, followed by discussion from 3:30 pm to 4:20 pm
+    <li> <b> Lecture place: </b> SGM 124
+    <li> <b> Instructor: </b> Vatsal Sharan (vsharan)
+        <li> <b>TAs: </b> Coming soon
+        <li> <b>CPs & Graders: </b> Coming soon
+                <li> <b> Office Hours: </b> Coming soon on this <a href="https://calendar.google.com/calendar/embed?src=b6792486e1d80863004c4ef2d20478a064178c043843e791fb8096acae907233%40group.calendar.google.com&ctz=America%2FLos_Angeles"> Google calendar</a>.
+                <li> <b> Communication: </b> All inquiries which do not pertain to a specific member of the course staff should be sent via ed Discussion (see below). USC email-ids of all staff members are in parantheses above.
+        <li> <b> ed Discussion: </b> We will be using <a href="https://edstem.org/">ed</a> for all course communications (regarding homework, project, course scheduling, etc). Please feel free to ask/answer any questions about the class on ed. You can post privately on ed to contact the course staff for any reason. You should be enrolled in Ed automatically.
+            <li> <b> Gradescope: </b> We will use <a href="https://gradescope.com/">Gradescope </a> for assignment and final project submission. You should be enrolled in Gradescope automatically.
+</ul>
+
+<h3 style="color:#1F618D;">Course Description and Objectives</h3>
+
+<br>
+
+<div class="row">
+  <div class="col-md-4">
+  <div class="photo">
+      <center>
+        <img id="picture" src="docs/xkcd_ml.png" style="width:355px;height:425px;" />
+        </center>
+  </div>
+  </div>
+  </div>
+
+<br>
+
+
+<p> <em>Is this what we'll learn to do in this class? Or is this what we'll learn not to do? </em> 🤔🤔🤔
+
+</p>
+
+
+The chief objective of this course is to introduce standard statistical machine learning methods, including but not limited to various methods for supervised and unsupervised learning problems. Particular focus is on the conceptual understanding of these methods, their applications, and hands-on experience.
+
+<h3 style="color:#1F618D;">Prerequisites</h3>
+
+(1) Undergraduate level training or coursework on linear algebra, (multivariate) calculus, and basic probability and statistics;<br> (2) Basic skills in programming with Python; <br> (3) Undergraduate level training in the analysis of algorithms (e.g. runtime analysis).
+
+           
+<h3 style="color:#1F618D;">Syllabus and Materials</h3>
+
+The following is a tentative schedule. The exam timings are fixed, but the rest of the content will likely change as the course continues. We will also post lecture notes and assignments here.<br><br>
+    
+    Please refer to Ed Discussion for recommended readings.
+<br><br>
+<div id="table-custom">
+<table style="width:100%" align="right">
+<tr>
+  <th style="text-align:center" style="width:8%">Date</th>
+  <th style="text-align:center">Topics</th>
+  <th style="text-align:center">Lecture notes</th>
+  <th style="text-align:center">Homework/<br>Practice problems</th>
+</tr>
+<tr>
+  <td align="center">1/12</td>
+  <td align="left">Lecture 1: Introduction, Linear regression; Optimization algorithms <br>
+  Discussion: Linear algebra review
+  </td>
+  <td align="left">
+    
+  </td>
+  <td align="center">
+  
+  </td>
+</tr>
+<tr>
+  <td align="center">1/19</td>
+  <td align="left">Lecture 2: Linear classifiers; Perceptron; Logistic regression <br>
+      Discussion: Probability review
+  <td align="left">
+      
+  </td>
+  <td align="center">
+      
+  </td>
+</tr>
+
+<tr>
+  <td align="center">1/26</td>
+  <td align="left">Lecture 3: Generalization; Nonlinear basis; Regularization<br>
+      Discussion: Linear algebra & Numpy review
+      <td align="left">
+         
+      </td>
+  <td align="center">
+  
+  </td>
+</tr>
+
+<tr>
+  <td align="center">2/2</td>
+  <td align="left">Lecture 4: L1 regularization; Kernel methods <br>
+      Discussion: Problem solving
+  <td align="left">
+      
+  </td>
+  <td align="center">
+      
+  </td>
+</tr>
+
+<tr>
+  <td align="center">2/9</td>
+  <td align="left">Lecture 5: SVM<br>
+      Discussion: HW1 review
+  <td align="left">
+      
+  </td>
+  <td align="center">
+  
+  </td>
+</tr>
+<tr>
+  <td align="center">2/16</td>
+  <td align="left">Lecture 6: Multiclass classification; Neural Networks <br>
+      Discussion: Problem discussion for Exam 1
+  <td align="left">
+     
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">2/23</td>
+  <td align="left">Lecture 7: Neural networks for images and sequences (and Markov models) <br>
+      Discussion: HW2 review
+  <td align="left">
+      
+  </td>
+  <td align="center">
+      
+</tr>
+<tr>
+  <td align="center">3/1</td>
+  <td align="left">Lecture: Exam 1 📝 <br>
+      No Discussion session
+  <td align="left">
+      
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">3/8</td>
+  <td align="left">Lecture 8: Transformers, foundation models <br>
+      Discussion: Exam 1 review
+  <td align="left">
+     
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">3/15</td>
+  <td align="left">Spring break ☀️
+  <td align="left">
+     
+  </td>
+  <td align="center">
+      
+      </a>
+      
+</tr>
+<tr>
+  <td align="center">3/22</td>
+  <td align="left">Lecture 9: Decision trees; Ensemble methods <br>
+      Discussion: Project overview
+  <td align="left">
+      
+  </td>
+  <td align="center"></td>
+</tr>
+
+<tr>
+  <td align="center">3/29</td>
+  
+<td align="left">Lecture 10: Dimensionality reduction and visualization; PCA <br>
+  Discussion: HW3 review
+      <td align="left">
+         
+      </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">4/5</td>
+  <td align="left">Lecture 11: Clustering; k-means; Gaussian mixture models; EM <br>
+      Discussion: Evaluation metrics (precision, recall etc.)
+      
+      </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">4/12</td>
+  <td align="left">Lecture 12: Density estimation; Generative models & Naive Bayes; Multi-armed bandits <br>
+      Discussion: Problem solving
+  <td align="left">
+      
+  </td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">4/19</td>
+  <td align="left">Lecture 13: Responsible ML, Fairness, Robustness, Privacy <br>
+      Discussion: HW4 review
+  <td align="left">
+      
+  </td>
+  <td align="center"></td>
+  </td>
+</tr>
+</tr>
+<tr>
+  <td align="center">4/26</td>
+  <td align="left">Lecture: Exam 2 📝 <br>
+      No Discussion session
+  <td align="left">
+      
+  </td>
+  <td align="center">
+  
+  </td>
+</tr>
+<tr>
+  <td align="center">TBD</td>
+  <td align="left">Project report due 📕
+  <td align="left">
+      
+  </td>
+  <td align="center"></td>
+</tr>
+
+</table>
+</div>
+     
+<div><h3 style="color:#1F618D;">Requirements and Grading</h3></div>
+
+<ol>
+    
+    <li>  <b> 4 homeworks </b> worth 40% of the grade. The homeworks will be a combination of theoretical and exploratory programming questions. They should be done in <b> groups of 2</b>. Two late days will be available to every student for the homeworks. If a group submits one day late, one late day will be substracted from each group member. A maximum of one late day can be applied to any homework.
+    <li> <b>Two exams </b> during class hours worth 20% each. The exams will test conceptual understanding of the material covered in the lectures, discussions and assignments.
+    <li> A <b>course project</b> worth 20%. The project should be in <b> groups of 4 students</b>. More information will be released later.
+    <li> <b>Contributions to the class</b> (Discretionary Grade Bumps): You are encouraged to help your fellow classmates when possible and improve everyone's learning experience, such as by responding to Ed Discussion questions when you know the answer. At the end of the course, we will bump up grades of those students who had the most positive impact on the class, according to the (quite subjective) judgement of the course staff.
+
+</ol>
+
+<h3 style="color:#1F618D;">Resources and related courses</h3>
+
+<ol>
+    
+    <li>  There is no required textbook for this class, but the following books are good supplemental reading for many parts.
+        <ul>
+            <li> Probabilistic Machine Learning: An Introduction [PML] by Kevin Murphy. Available online <a href="https://probml.github.io/pml-book/book1.html">here</a>.
+            <li> Elements of Statistical Learning [ESL] by Trevor Hastie, Robert Tibshirani and Jerome Friedman. Available online <a href="https://hastie.su.domains/Papers/ESLII.pdf">here</a>.
+            <li> Pattersn, Predictions, and Actions:
+                A story about machine learning, by Moritz Hardt and Benjamin Recht. Available online <a href="https://mlstory.org/">here</a>.
+            <li> (for more of the theory) Understanding Machine Learning:
+                From Theory to Algorithms, by Shai Shalev-Shwartz and Shai Ben-David. Available online <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf">here</a>.
+                    
+           </ul>
+        
+        <li> This course draws heavily from several other related courses, particular the previous iteration of this class by Prof. Haipeng Luo and other USC faculty:
+            
+            <ul>
+             
+             <li> Haipeng Luo's class at USC. <a href="https://haipeng-luo.net/courses/CSCI567/2021_fall/index.html">[website]</a>
+                 
+                 
+                     <li> CS229 at Stanford.
+                     <a href="https://cs229.stanford.edu/">[website]</a>
+                     <li> Greg Valiant's class at Stanford.
+                         <a href="http://web.stanford.edu/class/cs168/index.html">[website]</a>
+                     
+                     
+            </ul>
+            
+         </ol>
+
+<h3 style="color:#1F618D;">Helpful reminders</h3>
+
+
+
+<p><b>Collaboration policy and academic integrity:</b> Our goal is to maintain an optimal learning environment. You can discuss the homework problems at a high level with other groups, but you should not look at any other group's solutions. Trying to find solutions online or from any other sources for any homework or project is prohibited, will result in zero grade and will be reported. To prevent any future plagiarism, uploading any material from the course (your solutions, exams etc.) on the internet is prohibited, and any violations will also be reported. Please be considerate, and help us help everyone get the best out of this course.</p>
+
+<p>Please remember the Student Conduct Code (Section 11.00 of the USC Student Guidebook). General principles of academic honesty include the concept of respect for the intellectual property of others, the expectation that individual work will be submitted unless otherwise allowed by an instructor, and the obligations both to protect one's own academic work from misuse by others as well as to avoid using another's work as one's own. All students are expected to understand and abide by these principles. Students will be referred to the Office of Student Judicial Affairs and Community Standards for further review, should there be any suspicion of academic dishonesty.</p>
+     
+     <p><b>Students with disabilities:</b> Any student requesting academic accommodations based on a disability is required to register with Disability Services and Programs (DSP) each semester. A letter of verification for approved accommodations can be obtained from DSP. Please be sure the letter is delivered to the instructor as early in the semester as possible.</p>
+     
+      <br><br><br>
+     
+</div>
+</div>
+</body>
+</html>
